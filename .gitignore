@@ -72,3 +72,6 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+Project300/Saved/Logs/Project300.log
+Project300/Saved/AutoScreenshot.png
+Project300/Intermediate/CachedAssetRegistry.bin
