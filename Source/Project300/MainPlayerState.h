@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerState.h"
+#include "Collectable.h"
 #include "MainPlayerState.generated.h"
 
 /**
@@ -20,4 +21,12 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 		float PokePower;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		TArray<FName> Keys;
+
+	UFUNCTION(BlueprintCallable)
+	bool HasKey(FName ID);
+
+	void AddKey(FName id);
 };
