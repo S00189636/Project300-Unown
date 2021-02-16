@@ -4,17 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "MyPlayerCharacter.generated.h"
-
+#include "CustomCharacterEnemy.generated.h"
 
 UCLASS()
-class PROJECT300_API AMyPlayerCharacter : public ACharacter
+class PROJECT300_API ACustomCharacterEnemy : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this character's properties
-	AMyPlayerCharacter();
+	ACustomCharacterEnemy();
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,5 +25,5 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
+
 };

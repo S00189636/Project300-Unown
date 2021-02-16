@@ -7,9 +7,9 @@ void AMainPlayerState::AddKey(FName id) {
 
 	if (HasKey(id))
 		return;
-	keys.Add(id);
+	Keys.Add(id);
 }
 bool AMainPlayerState::HasKey(FName id) 
 {
-	return keys.Contains(id);
+	return Keys.Contains(id);
 }
