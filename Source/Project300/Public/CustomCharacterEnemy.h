@@ -14,7 +14,10 @@ class PROJECT300_API ACustomCharacterEnemy : public ACharacter
 public:
 	// Sets default values for this character's properties
 	ACustomCharacterEnemy();
-
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float MaxHealth;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Health;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
