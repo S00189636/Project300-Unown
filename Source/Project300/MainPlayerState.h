@@ -21,12 +21,27 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 		float PokePower;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		bool NeedHealth;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		float CurrentHealth;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		float MaxHealth;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 		TArray<FName> Keys;
 
 	UFUNCTION(BlueprintCallable)
 	bool HasKey(FName ID);
+
+	UFUNCTION(BlueprintCallable)
+	void TakeDamage(float Amount);
+
+	UFUNCTION(BlueprintCallable)
+	void AddHealth(float Amount);
 
 	void AddKey(FName id);
 };
