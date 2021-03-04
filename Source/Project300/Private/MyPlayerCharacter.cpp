@@ -8,7 +8,7 @@
 // Sets default values
 AMyPlayerCharacter::AMyPlayerCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }
@@ -17,7 +17,7 @@ AMyPlayerCharacter::AMyPlayerCharacter()
 void AMyPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
@@ -36,12 +36,25 @@ void AMyPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 void AMyPlayerCharacter::NotifyActorBeginOverlap(AActor* OtherActor)
 {
+
+	//GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Hit Something"));
+
 	if (OtherActor->IsA(ACollectable::StaticClass())) {
-		// handel keys 
+
+		ACollectable* currentCollectable = Cast<ACollectable>(OtherActor);
 		AMainPlayerState* pState = Cast<AMainPlayerState>(GetPlayerState());
-		ACollectable* key = Cast<ACollectable>(OtherActor);
-		pState->AddKey(key->ID);
-		OtherActor->Destroy();
+		switch (currentCollectable->Type)
+		{
+		case ECollectableType::Key :
+			// handle keys 
+			pState->AddKey(currentCollectable->ID);
+			OtherActor->Destroy();
+			break;
+		case ECollectableType::Item:
+				if(pState->HandelCollectableItem(currentCollectable))
+					OtherActor->Destroy();
+				break;
+		}
 	}
 }
 

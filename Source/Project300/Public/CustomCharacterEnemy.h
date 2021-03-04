@@ -18,6 +18,7 @@ public:
 	float MaxHealth;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float Health;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

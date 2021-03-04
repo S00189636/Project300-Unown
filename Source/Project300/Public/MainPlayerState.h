@@ -38,10 +38,13 @@ public:
 	bool HasKey(FName ID);
 
 	UFUNCTION(BlueprintCallable)
-	void TakeDamage(float Amount);
+	void TakeDamageToHealth(float Amount);
 
 	UFUNCTION(BlueprintCallable)
 	void AddHealth(float Amount);
+
+	UFUNCTION(BlueprintCallable)
+		bool HandelCollectableItem(ACollectable* item);
 
 	void AddKey(FName id);
 };

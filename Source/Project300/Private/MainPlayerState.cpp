@@ -11,7 +11,7 @@ void AMainPlayerState::AddKey(FName id) {
 	Keys.Add(id);
 }
 
-void AMainPlayerState::AddHealth(float amount) 
+void AMainPlayerState::AddHealth(float amount)
 {
 	CurrentHealth += amount;
 	if (CurrentHealth >= MaxHealth) {
@@ -20,17 +20,32 @@ void AMainPlayerState::AddHealth(float amount)
 	}
 }
 
-void AMainPlayerState::TakeDamage(float amount) 
+void AMainPlayerState::TakeDamageToHealth(float amount)
 {
 	CurrentHealth -= amount;
 	if (CurrentHealth < MaxHealth)
 		NeedHealth = true;
 	if (CurrentHealth <= 0)
-		UGameplayStatics::OpenLevel(GetWorld(),"Death");
-	
+		UGameplayStatics::OpenLevel(GetWorld(), "Death");
+
 }
 
-bool AMainPlayerState::HasKey(FName id) 
+bool AMainPlayerState::HandelCollectableItem(ACollectable* item)
+{
+
+	if (item->ID == "Health") {
+
+		if (!NeedHealth)
+			return false;
+
+		AddHealth(item->ValueAmount);
+	}
+
+	return true;
+}
+
+
+bool AMainPlayerState::HasKey(FName id)
 {
 	return Keys.Contains(id);
 }

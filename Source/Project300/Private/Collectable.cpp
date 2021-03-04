@@ -14,7 +14,6 @@ ACollectable::ACollectable()
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	Mesh->SetupAttachment(SceneComp);
-	ID = "Door1";
 }
 
 

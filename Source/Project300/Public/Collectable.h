@@ -6,6 +6,14 @@
 #include "GameFramework/Actor.h"
 #include "Collectable.generated.h"
 
+
+UENUM()
+enum ECollectableType
+{
+	Key         UMETA(DisplayName = "Key"),
+	Item      UMETA(DisplayName = "Item")
+};
+
 UCLASS()
 class PROJECT300_API ACollectable : public AActor
 {
@@ -24,4 +32,12 @@ public:
 	UPROPERTY(EditAnywhere)
 		USceneComponent* SceneComp;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		TEnumAsByte<ECollectableType> Type;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		float ValueAmount;
+
 };
+
+
