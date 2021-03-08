@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-RiderLoggingExtension-0019.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\GitHub\Project300\Intermediate\Build\Win64\Project300Editor\Development\Core\SharedPCH.Core.RTTI.ShadowErrors.h.obj"
+"D:\GitHub\Project300\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderLoggingExtension\Module.RiderLoggingExtension.cpp.obj"
+"D:\GitHub\Project300\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderLoggingExtension\Default.rc2.res"
+/OUT:"D:\GitHub\Project300\Plugins\Developer\RiderLink\Intermediate\Build\Win64\UE4Editor\Development\RiderLoggingExtension\UE4Editor-RiderLoggingExtension-0019.lib"
+/INCLUDE:IMPLEMENT_MODULE_RiderLoggingExtension

@@ -51,7 +51,7 @@ void AMainPlayerState::AddMana(float amount)
 
 bool AMainPlayerState::UseMana(float amount)
 {
-	if (CurrentMana-amount <= 0)
+	if (CurrentMana-amount < 0)
 		return false;
 	CurrentMana -= amount;
 	if (CurrentMana < MaxMana)
