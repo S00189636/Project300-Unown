@@ -7,7 +7,7 @@
 ACustomCharacterEnemy::ACustomCharacterEnemy()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 	
 	Health = MaxHealth;
 }
@@ -31,5 +31,13 @@ void ACustomCharacterEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInp
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+bool ACustomCharacterEnemy::SubtractHealth(float amount)
+{
+	Health -= amount;
+	if (Health <= 0)
+		return true;
+	return false;
 }
 

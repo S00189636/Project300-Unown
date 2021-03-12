@@ -16,7 +16,7 @@ public:
 	ACustomCharacterEnemy();
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float MaxHealth;
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	UPROPERTY(EditAnywhere)
 	float Health;
 
 protected:
@@ -30,4 +30,6 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UFUNCTION(BlueprintCallable)
+		bool SubtractHealth(float Amount);
 };
