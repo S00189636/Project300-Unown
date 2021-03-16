@@ -2,6 +2,7 @@
 
 
 #include "MainPlayerState.h"
+#include "MyCppGameInstance.h"
 #include "Kismet/GameplayStatics.h"
 
 
@@ -33,8 +34,10 @@ void AMainPlayerState::TakeDamageToHealth(float amount)
 	CurrentHealth -= amount;
 	if (CurrentHealth < MaxHealth)
 		NeedHealth = true;
-	if (CurrentHealth <= 0)
-		UGameplayStatics::OpenLevel(GetWorld(), "Death");
+	if (CurrentHealth <= 0){
+		/*UGameplayStatics::OpenLevel(GetWorld(), "Death");*/
+		Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->Die();
+	}
 
 }
 

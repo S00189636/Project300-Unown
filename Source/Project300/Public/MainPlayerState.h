@@ -23,6 +23,12 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Abilities")
 		float PokePower;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Damage")
+		float PokeDamage;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Damage")
+		float MinDamage;
+
 	// health
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category="Health")
 		bool NeedHealth;
