@@ -27,6 +27,8 @@ void AMainPlayerState::AddHealth(float amount)
 		CurrentHealth = MaxHealth;
 		NeedHealth = false;
 	}
+
+	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->SetHealthHUDValueFromAmount(CurrentHealth, MaxHealth);
 }
 
 void AMainPlayerState::TakeDamageToHealth(float amount)
@@ -39,6 +41,7 @@ void AMainPlayerState::TakeDamageToHealth(float amount)
 		Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->Die();
 	}
 
+	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->SetHealthHUDValueFromAmount(CurrentHealth, MaxHealth);
 }
 
 // mana 
@@ -49,18 +52,23 @@ void AMainPlayerState::AddMana(float amount)
 		CurrentMana = MaxMana;
 		NeedMana = false;
 	}
+
+	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->SetManaHUDValueFromAmount(CurrentMana, MaxMana);
 }
 
 
 bool AMainPlayerState::UseMana(float amount)
 {
+
 	if (CurrentMana-amount < 0)
 		return false;
 	CurrentMana -= amount;
 	if (CurrentMana < MaxMana)
 		NeedMana = true;
-	return  true;
 
+	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->SetManaHUDValueFromAmount(CurrentMana, MaxMana);
+
+	return  true;
 }
 
 // Handel collecting items

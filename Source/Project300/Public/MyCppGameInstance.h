@@ -16,4 +16,10 @@ class PROJECT300_API UMyCppGameInstance : public UGameInstance
 public:
 		UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 		void Die();
+
+		UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+			void SetHealthHUDValueFromAmount(float amount, float maxAmount);
+
+		UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+			void SetManaHUDValueFromAmount(float amount, float maxAmount);
 };
