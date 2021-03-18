@@ -4,6 +4,7 @@
 #include "MainPlayerState.h"
 #include "MyCppGameInstance.h"
 #include "Kismet/GameplayStatics.h"
+#include "MyPlayerCharacter.h"
 
 
 // keys 
@@ -28,7 +29,8 @@ void AMainPlayerState::AddHealth(float amount)
 		NeedHealth = false;
 	}
 
-	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->SetHealthHUDValueFromAmount(CurrentHealth, MaxHealth);
+	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())
+		->SetHealthHUDValueFromAmount(CurrentHealth, MaxHealth);
 }
 
 void AMainPlayerState::TakeDamageToHealth(float amount)
@@ -41,7 +43,10 @@ void AMainPlayerState::TakeDamageToHealth(float amount)
 		Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->Die();
 	}
 
-	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->SetHealthHUDValueFromAmount(CurrentHealth, MaxHealth);
+	GetPawn<AMyPlayerCharacter>()->PlayHitSound();
+
+	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())
+		->SetHealthHUDValueFromAmount(CurrentHealth, MaxHealth);
 }
 
 // mana 
@@ -53,7 +58,8 @@ void AMainPlayerState::AddMana(float amount)
 		NeedMana = false;
 	}
 
-	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->SetManaHUDValueFromAmount(CurrentMana, MaxMana);
+	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())
+		->SetManaHUDValueFromAmount(CurrentMana, MaxMana);
 }
 
 
@@ -66,7 +72,8 @@ bool AMainPlayerState::UseMana(float amount)
 	if (CurrentMana < MaxMana)
 		NeedMana = true;
 
-	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())->SetManaHUDValueFromAmount(CurrentMana, MaxMana);
+	Cast<UMyCppGameInstance, UGameInstance>(GetGameInstance())
+		->SetManaHUDValueFromAmount(CurrentMana, MaxMana);
 
 	return  true;
 }
@@ -80,13 +87,12 @@ bool AMainPlayerState::HandelCollectableItem(ACollectable* item)
 
 		if (!NeedHealth)
 			return false;
-
 		AddHealth(item->ValueAmount);
-	}else if (item->ID == "Mana")
+	}
+	else if (item->ID == "Mana")
 	{
 		if (!NeedMana)
 			return false;
-
 		AddMana(item->ValueAmount);
 	}
 

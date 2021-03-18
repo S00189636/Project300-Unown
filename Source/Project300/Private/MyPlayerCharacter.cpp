@@ -45,15 +45,19 @@ void AMyPlayerCharacter::NotifyActorBeginOverlap(AActor* OtherActor)
 		AMainPlayerState* pState = Cast<AMainPlayerState>(GetPlayerState());
 		switch (currentCollectable->Type)
 		{
-		case ECollectableType::Key :
+		case ECollectableType::Key:
 			// handle keys 
 			pState->AddKey(currentCollectable->ID);
+			currentCollectable->PlaySoundEffect();
 			OtherActor->Destroy();
 			break;
 		case ECollectableType::Item:
-				if(pState->HandelCollectableItem(currentCollectable))
-					OtherActor->Destroy();
-				break;
+			if (pState->HandelCollectableItem(currentCollectable))
+			{
+				currentCollectable->PlaySoundEffect();
+				OtherActor->Destroy();
+			}
+			break;
 		}
 	}
 }

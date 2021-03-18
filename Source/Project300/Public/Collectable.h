@@ -10,7 +10,7 @@
 UENUM()
 enum ECollectableType
 {
-	Key         UMETA(DisplayName = "Key"),
+	Key       UMETA(DisplayName = "Key"),
 	Item      UMETA(DisplayName = "Item")
 };
 
@@ -38,6 +38,8 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 		float ValueAmount;
 
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+		void PlaySoundEffect();
 };
 
 
