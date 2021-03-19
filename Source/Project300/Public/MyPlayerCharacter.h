@@ -16,6 +16,12 @@ public:
 	// Sets default values for this character's properties
 	AMyPlayerCharacter();
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		int Seconds;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		int Minutes;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -30,4 +36,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 		void PlayHitSound();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+		void OnCreateFootstep();
 };
